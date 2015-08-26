@@ -2,9 +2,9 @@
   "baseUrl": "/~ksikka",
   "locals": {
     "url": "http://ctrl-c.club/~ksikka",
-    "name": "The Wintersmith's blog",
-    "owner": "Someone",
-    "description": "Ramblings of an immor(t)al demigod"
+    "name": "Bare Metal",
+    "owner": "Karan Sikka",
+    "description": "A random-walk through software history"
   },
   "plugins": [
     "./plugins/paginator.coffee"
