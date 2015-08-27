@@ -1,49 +1,46 @@
 ---
-title: Learning about Berkeley DB
+title: Berkeley DB
 author: ksikka
 date: 2015-08-26
 template: article.jade
 ---
 
-A review of an article on Berkeley DB, an embedded Key/Value database that's simple, fast, concurrent, and ACID.
+Berkeley DB is an open-source Key/Value database that lives in
+your address space than running as a separate process, so it has a light footprint.
+It's optimized for speed and supports advanced features like concurrency,
+ACID transactions, and replication. The interface to it is way simpler than SQL, since it's
+not relational. It's evolved for over 20 years now.
 
+## Why
 
-## Context
+I read about Berkeley DB first because of its simplicity and historical importance.
+BDB solves a narrower problem than a modern RDBMS.
+It was written in 1970 and still used today, so I'm sure modern databases today
+draw a lot from it.
 
-The problem of storing and retrieving data efficiently is ubiquitous in the software industry,
-and is one of the primary focuses of the Googles and Facebooks of the software world.
-You'd think by now databases are a solved problem, but thriving software products
-are constantly struggling to scale their backends to meet growing demand.
+## How
 
-My reading queue includes embedded DBs (such as this one),
-relational DB servers, various distributed storage/computation systems, and anything else
-that made a dent in database history, sorted by chronological order, filtered for interesting-ness.
+I read the Berkeley DB article from The Architecture of Open Source Applications.
 
-### The Berkeley DB article from the Architecture of Open Source
+Starting off, the author got me excited to learn how BDB worked,
+but then dove into architectural discussion without framing the discussion well.
+Later on, the author discusses the individual modules and then the beginning
+starts to make much more sense.
 
-I was expecting to learn how BDB worked, but I was surprised to find the article was about architectural decisions and not
-a general explanation of how it worked. In different words, the article was about
-"how do you draw the lines between modules" rather than "what modules do you need and why".
-The authors, Margo Seltzer and Keith Bostic, did a great job
-telling stories of how the evolution of BDB revealed the strengths and weaknesses of its architecture,
-but they took for granted the reader's fluency in basic database implementation.
+I remember looking at the Architecture Diagrams thinking:
 
-The article starts with an Architectural Overview,
-which - from my point of view - looked like a conglomeration of boxes labeled `<Noun> Manager`.
-My initial impressions:
+- **Record manager:** Imagine the owner of a vinyl store
+- **Log manager:** Just use log-rotate
+- **Lock manager:** Aren't simple locks enough?
+- **Buffer manager:** This means nothing to me
+- **Process manager:** What an OS is for
 
-    Record manager: imagine the owner of a vinyl store
-    Log manager: Why? Just use log-rotate
-    Lock manager: Why aren't Lock objects enough?
-    Buffer manager: What is a buffer in this context?
-    Process manager: I thought the OS is supposed to do this
-
-On page 8 of 17, "The Underlying Components" section begins.
-The four components underlying the db access methods are
-the buffer, lock, log, and transaction managers. I'll attempt to
-explain the function of each one in brief.
+A few pages later, and I got to the good part: The Underlying Modules.
+I'll explain each one in brief.
 
 #### The buffer manager: Mpool
+
+Where all the DB reading and writing happens.
 
 BDB data structures are not directly implemented on memory,
 nor are they directly implemented on files. The data structure "pointers"
@@ -65,6 +62,8 @@ The Log and Transaction sections explain this in more detail.
 
 #### The lock manager: Lock
 
+Logic to avoid stepping on toes. More like a module than a manager if you ask me.
+
 BDB uses page-level locking to ensure atomic operations. I infer this to mean
 that when you're mutating a data structure on a page, you acquire a lock so that
 others must wait till you're done writing to read the page. Similarly, if you're reading
@@ -85,6 +84,8 @@ about introducing nasty bugs. It also makes it easier to test the core Lock logi
 
 #### The log manager: Log
 
+Powering "breadcrumbs", like the ones in Hansel and Gretel.
+
 The log is a data-structure that sequentially stores the transational operations
 that occured, for the purpose of aiding Recovery. If the database crashes
 while changes to in-memory buffers have not yet been flushed,
@@ -97,6 +98,8 @@ The log is implemented on top of Mpool just like a database Btree would be,
 which justifies the decision to make Mpool is a separate module.
 
 #### The transaction manager: Txn
+
+Actaully dropping the "breadcrumbs" and following them back (and more not covered here).
 
 Transactions are what allow BDB support ACID. Full ACID transaction
 support is optional in BDB - you can turn it off for faster performance,
@@ -127,17 +130,13 @@ and "doing" above. I'm not sure how BDB would handle random data corruptions.
 ## So much to learn
 
 For a first pass, this was fruitful. I learned a lot about the general
-decisions that BDB made, and I generated a lot of questions.
-Writing this forced me to iron out my understanding of the reading,
-and a light second-pass proved enlightening.
+decisions that BDB made, and it generated a lot of questions.
 
-Out of curiosity, I googled BDB Write ahead log, and stumbled upon
-a SQLite page! Turns out SQLite uses a different method of
-ensuring durability / recovery by default, but you can turn WAL mode on,
-in which case it operates more like BDB. Neat that I can start to
-make these connections now. SQLite might make a good next article.
-But - I think I'm going to mix it up with a large scale data analysis paper.
+Out of curiosity, I googled "BDB Write ahead log", and stumbled upon
+a SQLite page! It turns out SQLite uses a different method of
+recovery, but supports WAL optionally. I'll read about that sometime,
+but next up on my queue is A Comparison of Approaches to Large Scale Data Analysis.
 
 Huzzah! We're at the end. I think I will do this again, but
-I'm not sure if writing these long write ups is sustainable.
-I'll play it by ear. Until next time!
+I'm not sure if writing write-ups this long is sustainable.
+I hope it gets easier with practice. I'll play it by ear. Until next time!
