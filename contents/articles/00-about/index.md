@@ -13,16 +13,15 @@ But one downside of being so young is...
 ## Inexperience
 
 Experience prevents you from making costly mistakes.
-That's why companies pay experienced Engineers
+That's one reason why companies pay Senior Engineers
 more than their junior counterparts.
 But we often overlook one big flaw with experience:
 
 ### Experience is lopsided.
 
-The the way to round out your "experience" is to learn
-from the experiences of others. One way to do that is
-to read. Today it's easier than ever with the abundance
-of content available online.
+The way to round it out is to learn
+from the experiences of others. One way to do that is reading.
+Today it's is easier than ever with the abundance of content available online.
 
 ## Taking the time
 
