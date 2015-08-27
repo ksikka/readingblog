@@ -29,18 +29,17 @@ starts to make much more sense.
 
 I remember looking at the Architecture Diagrams thinking:
 
-- **Record manager:** Imagine the owner of a vinyl store
-- **Log manager:** Just use log-rotate
-- **Lock manager:** Aren't simple locks enough?
-- **Buffer manager:** This means nothing to me
-- **Process manager:** What an OS is for
+1. **Record manager:** Imagine the owner of a vinyl store
+2. **Log manager:** Just use log-rotate
+3. **Lock manager:** Aren't simple locks enough?
+4. **Buffer manager:** This means nothing to me
 
 A few pages later, and I got to the good part: The Underlying Modules.
 I'll explain each one in brief.
 
-#### The buffer manager: Mpool
+#### 1. The buffer manager: Mpool
 
-Where all the DB reading and writing happens.
+Where the BTrees live and flourish. Well, that's what the rest of BDB thinks.
 
 BDB data structures are not directly implemented on memory,
 nor are they directly implemented on files. The data structure "pointers"
@@ -60,7 +59,7 @@ a log entry before the operation occurs.
 This feature does hurt performance, since the log page will need to be flushed on every operation.
 The Log and Transaction sections explain this in more detail.
 
-#### The lock manager: Lock
+#### 2. The lock manager: Lock
 
 Logic to avoid stepping on toes. More like a module than a manager if you ask me.
 
@@ -82,7 +81,7 @@ And describing the lock configuration shouldn't be intertwined with core locking
 Separating the two makes it easier to change the configuration without worrying
 about introducing nasty bugs. It also makes it easier to test the core Lock logic.
 
-#### The log manager: Log
+#### 3. The log manager: Log
 
 Powering "breadcrumbs", like the ones in Hansel and Gretel.
 
@@ -97,9 +96,9 @@ More about recovery in the transaction manager section.
 The log is implemented on top of Mpool just like a database Btree would be,
 which justifies the decision to make Mpool is a separate module.
 
-#### The transaction manager: Txn
+#### 4. The transaction manager: Txn
 
-Actaully dropping the "breadcrumbs" and following them back (and more not covered here).
+Dropping the "breadcrumbs" and following them back (and more not covered here).
 
 Transactions are what allow BDB support ACID. Full ACID transaction
 support is optional in BDB - you can turn it off for faster performance,

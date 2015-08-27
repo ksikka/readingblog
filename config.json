@@ -2,9 +2,9 @@
   "baseUrl": "/~ksikka",
   "locals": {
     "url": "http://ctrl-c.club/~ksikka",
-    "name": "Bare Metal",
+    "name": "Karan Sikka",
     "owner": "Karan Sikka",
-    "description": "A random-walk through software history"
+    "description": "Where I write about what I read."
   },
   "plugins": [
     "./plugins/paginator.coffee"
