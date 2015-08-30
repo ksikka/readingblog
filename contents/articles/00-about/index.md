@@ -1,5 +1,5 @@
 ---
-title: Hello World!
+title: "What's the point?"
 author: ksikka
 date: 2015-08-25
 template: article.jade
