@@ -7,8 +7,7 @@ template: article.jade
 
 Being 21 and fresh out of school is fantastic.
 At this point in life, your book is unwritten.
-
-But one downside of being so young is...
+The only caveat is...
 
 ## Inexperience
 
@@ -19,16 +18,19 @@ But we often overlook one big flaw with experience:
 
 ### Experience is lopsided.
 
-The way to round it out is to learn
-from the experiences of others. One way to do that is reading.
+One way to round it out is to learn
+from the experiences of others, by reading.
 Today it's is easier than ever with the abundance of content available online.
+Experts from industry and academia have poured their thoughts and
+experiences into blog posts, papers, and books.
+But how often do we tap into this sea of knowledge?
 
 ## Taking the time
 
-So a couple days ago I decided to allocate
-time every week to filling the gaps in my knowledge.
-For personal professional purposes, that means learning
-how real software systems work.
+A couple days ago I decided to allocate
+time every week to fill in the gaps of my experience.
+For professional purposes, that means learning
+how real software systems get built.
 
 I plan to read about includes databases, filesystems, distributed systems,
 query planning, immutable data structures, parsing, information retrieval, and more.
@@ -42,11 +44,14 @@ experienced about X. It's also not the same as having direct
 experience doing X.
 
 I agree, so I'm also going
-to write a post on every article I read. The post will
-be a summary plus my thoughts.
-The goal will be to explain the learnings of the article in a way
-that's enlightening. Not only does this prove
-that you read about a topic, but it also proves that you have
+to write an expository post on every article I read. The posts
+will be targeted towards engineers like me who have strong fundamentals
+but may lack domain expertise in the area.
+The goal of each post is to teach you something new
+and making you wanting more.
+
+Not only does process this prove
+that you've read about a topic, but it also proves that you have
 meaningful thoughts on it.
 
 The most important benefit of writing

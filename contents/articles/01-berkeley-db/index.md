@@ -73,7 +73,7 @@ BDB breaks it down into four subsystems:
 4. **[Transaction manager:](#4-the-transaction-manager-txn)** Uses Locks and Log to implement transactions and recovery.
 
 Now I'll summarize what each subsystem does and how it works.
-[Click here](#learning-more) instead to skip the deep dive.
+Or, you can [skip](#learning-more) the deep dive and move on.
 
 ### Deep(er) dive
 
