@@ -12,6 +12,8 @@ It's just a key-value store that you `#include` in your code.
 It intuitively seems like it could be a building block
 in constructing a full blown relational database server.
 
+---
+
 ### What is it
 
 BDB is a persistent, key-value store that's unaware of the underlying type you're storing.
