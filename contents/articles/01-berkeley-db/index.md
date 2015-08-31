@@ -5,7 +5,7 @@ date: 2015-08-26
 template: article.jade
 ---
 
-In my quest to learn more about how about databases work,
+In my quest to learn more about how databases work,
 I started with Berkeley DB for one reason: simplicity.
 It doesn't parse SQL, it doesn't create a query plan, it doesn't have a client/server architecture.
 It's just a key-value store that you `#include` in your code.
