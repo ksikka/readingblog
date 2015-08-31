@@ -5,16 +5,16 @@ date: 2015-08-26
 template: article.jade
 ---
 
-In my quest to learn about how more about databases work,
+In my quest to learn more about how about databases work,
 I started with Berkeley DB for one reason: simplicity.
 It doesn't parse SQL, it doesn't create a query plan, it doesn't have a client/server architecture.
 It's just a key-value store that you `#include` in your code.
-It intuitively seems like it could be a building block
+Intuitively it seems like it could be a building block
 in constructing a full blown relational database server.
 
 ---
 
-### What is it
+### What is it?
 
 BDB is a persistent, key-value store that's unaware of the underlying type you're storing.
 It stores your data in a single file which it manages automatically.
@@ -30,22 +30,52 @@ deal with users and permissions, etc.
 The second is lower IO overhead. You don't need to talk
 to BDB through a socket. All you need is a function call.
 
-### How does it work
+### How does it work?
 
-BDB has to store and retrieve data from a file on disk,
-do so quickly using data structures and caching, and allow
-concurrency using locking. Additionally, it has to support
-transactions and recovery in case your database goes down before data was flushed to disk.
+BDB stores, organizes, and retrieves data from a file on disk.
+There's a **single file** for each database, which BDB
+slices up into **multiple "pages"** for its own internal use.
+Each page has a page id. Pages can be created, deleted,
+read to cache, released from cache, and flushed back to disk.
 
-That's a lot of complexity. BDB breaks the functionality down into these
-four subsystems.
+BDB **data structures** are implemented in such a way that
+they **read and write on these pages** in memory. The
+task of commanding these pages to write back to disk is
+that of the Transaction manager.
 
-1. **Buffer manager:** A page-based cache for persistent data structures on disk.
-2. **Log manager:** Code to sequentially store "breadcrumbs" for DB operations.
-3. **Lock manager:** Safely allows concurrent data access accross threads and processes.
-4. **Transaction manager:** Uses Locks and Log to implement transactions and recovery.
+When you modify a B+ tree or Hash structure,
+your **writes are typically not sequential**. You
+may jump from pointer to pointer, writing on non-adjacent pages.
+This is slower than writes to sequential pages on
+hard disk drives. Thus, as a **performance optimization**,
+BDB will avoid flushing pages to disk immediately,
+and will instead write out what changed in a sequntial manner to
+a **log database**.
 
-### The Internals
+There's a risk that the process goes down before the
+database state is consistent with the log state.
+BDB can use the log to **recover** the database.
+
+BDB supports highly concurrent access from **multiple threads
+and multiple processes**. It uses **page-level locking**
+to ensure data isn't corrupted when being accessed concurrently.
+Modern databases may implement record-level locking
+for more granular concurrency, but BDB does not for simplicity's sake.
+And in practice it works quite well. If you need more granular locking,
+you can reduce the page size.
+
+Phew, that's a lot of responsibility for BDB to handle.
+BDB breaks it down into four subsystems:
+
+1. **[Buffer manager:](#1-the-buffer-manager-mpool)** A page-based cache for persistent data structures on disk.
+2. **[Lock manager:](#2-the-lock-manager-lock)** Safely allows concurrent data access accross threads and processes.
+3. **[Log manager:](#3-the-log-manager-log)** Code to sequentially store "breadcrumbs" for DB operations.
+4. **[Transaction manager:](#4-the-transaction-manager-txn)** Uses Locks and Log to implement transactions and recovery.
+
+Now I'll summarize what each subsystem does and how it works.
+[Click here](#learning-more) instead to skip the deep dive.
+
+### Deep(er) dive
 
 #### 1. The buffer manager: Mpool
 
