@@ -49,7 +49,7 @@ may jump from pointer to pointer, writing on non-adjacent pages.
 This is slower than writes to sequential pages on
 hard disk drives. Thus, as a **performance optimization**,
 BDB will avoid flushing pages to disk immediately,
-and will instead write out what changed in a sequntial manner to
+and will instead write out what changed in a sequential manner to
 a **log database**.
 
 There's a risk that the process goes down before the

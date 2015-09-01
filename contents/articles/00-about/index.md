@@ -48,7 +48,7 @@ to write an expository post on every article I read. The posts
 will be targeted towards engineers like me who have strong fundamentals
 but may lack domain expertise in the area.
 The goal of each post is to teach you something new
-and making you wanting more.
+and leave you wanting more.
 
 Not only does process this prove
 that you've read about a topic, but it also proves that you have
