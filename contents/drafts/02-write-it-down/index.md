@@ -19,7 +19,8 @@ and **make little-to-no progress** on stewing up a plan.
 Stubborn to make sure that wouldn’t happen, I accepted a job offer, went to work, but with a notebook in hand.
 
 For five months, I **wrote down every use of my time** as if it were a ledger.
-And then the following three things happened.
+Here are three benefits that came along with it:
+
 
 #### 1. Easy weekly status updates
 
@@ -35,8 +36,9 @@ and my weekends are spent by being social, hacking, or reading and writing.
 
 #### 2. Improved follow-through rate
 
-By reviewing my previous week, I'm always reminded to follow up with the people I met.
-They might be friends of friends or acquaintences you bump into randomly.
+By reviewing your previous week, you're reminded to follow up with the people you met.
+These might be friends or acquaintences you bumped into randomly. Making friends
+is a different topic, but it's surprising that keeping a time log helps.
 
 Simply sending a message to a person you enjoyed meeting
 is a great way to get them to remember you, and to remember to invite you the next time they plan
@@ -74,7 +76,9 @@ This is what I wanted out of writing a time log, and it works.
 
 The biggest hurdle in writing everything down is **discipline**.
 The way to solve this problem is to make writing in your time log a routine that you're stubborn
-to follow. You can start by buying a nice notebook, pen, and wristwatch for two reasons:
+to follow.
+
+You can start by buying a nice notebook, pen, and wristwatch for two reasons:
 to **make time management a pleasure**, and to **get yourself financially invested**.
 
 After that, keep the notebook somewhere you regularly see it.
