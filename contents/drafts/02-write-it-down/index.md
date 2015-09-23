@@ -4,117 +4,183 @@ author: ksikka
 date: 2015-08-26
 template: article.jade
 ---
-> "The wise person forgets, but the pen does not."
 
-If you're a recent grad about to take on a full time job, I beg you to ask yourself, **why**?
-At 22 years old, the prime of your life, why would you sell your time and livelihood to someone else?
+**Today**, you're the youngest you'll ever be.
 
----------------------------------------
+And yet, if you have a full-time job, you're selling
+your time to someone else.  Maybe the job is what you truly how you want to spend your time,
+but more likely, you need the money and the job's something you could enjoy if you tried.
 
-Despite it being the widely-accepted thing to do, the underlying reason is often practical:
-to **build a financial and social base** while you figure out what to do next.
+If you haven't guessed, I'm pretty weary of the concept of a full-time job.
+The economist Keynes predicted as we become more productive as human beings, we'd work less.
+But it seems the opposite happened. The more we earn, the harder we work
+due to the opportunity cost of *not* working.
+<!--- It seems like a psychological illness that we humans are prone to. -->
 
-At least that was my answer. But my biggest fear was that I'd get engrossed in the work
-and **make little-to-no progress** on stewing up a plan.
-Stubborn to make sure that wouldn’t happen, I accepted a job offer, went to work, but with a notebook in hand.
+I was concerned about this when I graduated from university.
+I didn't want to fall into the 9-5 hamster-wheel that we call a job.
+That's why I took up the strange habit of writing down everything I did and when I did it.
 
-For five months, I **wrote down every use of my time** as if it were a ledger.
-Here are three benefits that came along with it:
+I hoped that this habit would prevent me from wasting too much time at work,
+but in the end, it forced me to confront the fact that as a working professional,
+**you spend most of your waking hours working for someone else**.
+
+It also fundamentally changed the way I see time and make decisions.
+Writing everything down daily is probably the highest value habit you can make.
+It's so simple - you just write down what you do every once in a while - and the end result
+can be lifechanging.
+
+If you're not already sold, here are the three specific lessons that
+writing everything down taught me.
+
+**1. Do things that add up.**
+
+As an engineer, your tasks add up in a super-linear way.
+One tweak alone is a small deal, but when 100s of them add up,
+you get a refined, polished product that can contend in the market.
+
+This was one reason that when I did my 2-month review, I felt that
+I'd accomplished more at work than I did with my free time.
+When I added up all the brunches, hikes, and reading, yes it was a great time,
+but where's the impact of it all today?
+
+**Follow up with people**
+
+There are a handful of people I met at these random social events that
+I actually ended up becoming good friends with. And I could attribute every friendship
+to the fact that I followed up with them, all because I kept time log.
+
+More often than not, we just *forget* to follow up with people.
+After we leave the party and go to work, life resumes as usual.
+But when you review your time log a few days later and think fondly
+about the times you had with that person, you remember to shoot them a message
+and that could be a life-changing move.
+
+It's a great feeling when you remember to follow up with people
+and projects *just* because you wrote down a note on a piece of paper.
+It's the same feeling as unexpectedly finding money in your jacket's pocket.
+
+**Don't let your past investments go to waste.**
+
+It's easy to get excited by something like a new app idea
+or a new book or a new blog post. The idea of starting something
+new and fresh is appealing when you see its tremendous future
+potential all at once as a shiny new idea in your head.
+
+But the hard part come afterwards, when another shiny new idea
+comes along and steals attention away from your old idea that
+hasn't yet realized the value you expected of it when you started.
+
+Everytime you start a new project - be it a book, blog post, feature etc - 
+You're usually making the decision to leave an old investment behind.
+If you're starting a blog post, you're saying "I'm done with the last blog post",
+which is saying "I don't have much to gain by spending time on the last post
+so I'd rather work on a new one".
+
+In so many cases, you're better off improving a thing you've already worked on
+rather than starting a new thing. If you're always starting new things,
+you'll never get one thing good enough to the point where people will care.
+
+Again, this is a really  basic lesson that you've probably heard
+a million times and think you already know, but the lesson
+doesn't stick until you keep a time log and witness yourself
+making the mistake of starting new projects without completing old ones.
+You can make it happen by changing the way you spend time.
+
+**3. Your plan to "Do things on the side" will fail.**
+
+Work is the thing you have to do when you wake up.
+You think about it in the shower, and it's stuck
+in your brain when you come home.
+And if your job is intensive, you'll probably want to relax after work
+instead of finding ways to be productive for yourself.
+What's life if 5/7 days a week you're struggling
+to do what you want with your time?
+
+Keeping a time log forces you to see this and take action.
+The solution is to prioritize your side project
+above work when you're disappointed in yourself for not making enough progress.
+It feels irresponsible at the time, knowing that other people might be working
+and you're doing something else, but it's the only way.
+
+If keeping a time log forces you to see this,
+that means that working full-time is *designed*
+to make you spend most of your life working for a company
+without you **realizing** how you could be spending your time instead.
+It's imperative that you keep a time log so you can at
+least keep a neutral state of mind.
+
+**Don't lean on your memory for anything**
+
+There's an underlying theme in all of the above lessons,
+and that humans suck at remember things.
+Today, there's a trend towards "living in the moment",
+but keeping a time log has made me realize
+that when you make on-the-fly decisions,
+you're living a stateless life where you're happy
+in-the-moment but you're forgetting to follow up with people,
+completing projects, and forgetting to look at the big picture.
+
+Writing everything down is extremely powerful habit
+outside of personal development. Written text can be shared digitally
+on a large scale. It stands the test of time - it never forgets.
+Studies have shown memories change slightly everytime you recall them.
+It gets to the point where when you compare your own memory with
+what the time log says, you're startled at the slight discrepancy.
+
+An extension of relying on writing over memory,
+is relying on data over intuition to make business decisions.
+I've learned that paranoia that intuition may be wrong is healthy,
+and looking at data is a good way to make sure you're not going crazy.
+
+Checking your own senility is required, even if you're smart competent, etc.
+Even the smartest, most competent person will suffer memory weaker
+than writing everything down, and their intuition 
+is still weaker impetus than the raw data.
+
+**2. You *can* write your own story.**
+
+It's expected to hesitate to keep or review your time log
+because you may not like what you'll see.
+
+But there's no reason to balk. If you don't like
+what you see, you'll be thankful that you saved yourself
+months or years of plowing ahead, wasting time.
+You can change the way you spend time *now*
+and in a few months, you'll *like* what you see
+in you time log.
+
+The algorithm of the time log is:
+1. write it down and facepalm at your life
+2. make a lifestyle change
+3. see your own change in your own time log
+4. feel like a million bucks
+
+The realization is that you *can* write your own story
+instead of letting your story happen to you.
+
+But you cannot simply be told these lessons and "internalize"
+or whatever. Human habits wont be moved so easily.
+Especially when you have your ego to protect.
+In order to *truly* learn these lessons, 
+you have to see them for yourself by writing down what you do everyday.
+
+**Discipline**
+
+Writing down everything you do, every day, is a hard habit to keep.
+A few actionable tips:
+
+1. **Buy a nice notebook and pen.** It gets you financially invested,
+    and a physical book sitting on open your desk is the best reminder.
+2. **Pair it with another daily habit**, like getting your morning coffee.
+3. **Enjoy it.** When writing down what you did today, look back 
+    on yesterday fondly, and be satisified knowing it will be recorded forever.
+4. **Build up a streak and cling to it.** Let the fear of breaking the streak drive you.
+
+If you're interested in trying this out, I want to help in whatever way I can.
+Sign up on this Google form to receive daily reminders to write in your time log.
+Or send me an email at karanssikkadotgmaildotcom to let me know you're
+going to try it, and I'll try to keep in touch to see how it's going.
 
 
-#### 1. Easy weekly status updates
 
-At Heap, we share what we did last week and what we plan to do this week.
-With everything written down in a notebook, this becomes a trivial task
-that you actually look forward to, because you get to relive your week in the process.
-Plus, you can do your own personal review every two months.
-
-After a while you start to notice trends.
-I noticed that I get an unusual amount done on Friday nights,
-I usually watch TV after work instead of doing anything productive,
-and my weekends are spent by being social, hacking, or reading and writing.
-
-#### 2. Improved follow-through rate
-
-By reviewing your previous week, you're reminded to follow up with the people you met.
-These might be friends or acquaintences you bumped into randomly. Making friends
-is a different topic, but it's surprising that keeping a time log helps.
-
-Simply sending a message to a person you enjoyed meeting
-is a great way to get them to remember you, and to remember to invite you the next time they plan
-a weekend hike.
-
-In general, small, high-value tasks like this usually fall through, but the simple act
-of looking back on your time helps you finish what you started.
-That's where most of the value is anyway.
-
-#### 3. You'll never forget
-
-You get a wonderful feeling of security from knowing that your time has been recorded forever.
-
-Writing down what you did during a vacation gets you the most ROI. What's a vacation worth if
-the memories only last a few months and then fade? It's a depreciating asset. When you write down
-what you do, memories hold their value and accrue over time. Writing adds context to photos
-so you can remember what else happened around the time a photo was taken. You can use
-that memory as an anchor point to remember how you were feeling at the time, and so on.
-
----------------------------------------
-
-### The Kicker
-
-If you're a working professional, writing everything down will make you confront the reality that
-**you spend the bulk of your waking hours working for someone else**.
-
-I'm not saying that working for someone else is bad.
-We all have to provide a service to someone in order to make money.
-But being fully aware of how much energy you spend working for someone else
-definitely makes you think about what you'd rather do instead.
-
-This is what I wanted out of writing a time log, and it works.
-
-### Making it a Routine
-
-The biggest hurdle in writing everything down is **discipline**.
-The way to solve this problem is to make writing in your time log a routine that you're stubborn
-to follow.
-
-You can start by buying a nice notebook, pen, and wristwatch for two reasons:
-to **make time management a pleasure**, and to **get yourself financially invested**.
-
-After that, keep the notebook somewhere you regularly see it.
-I kept it open on my desk while I worked so that as I switched tasks,
-I could easily jot down what I was doing. If you forget to do this - which is ok -
-the open book should remind you to backfill what you did.
-
-Share your weekly progress with people. The more people you tell, the more
-of a fool you'll look if you suddenly stop. I send updates to
-my parents every two months; they seem to enjoy it.
-
-### Final Thoughts
-
-The bigger picture of writing everything down is that it gives you the ability
-to pause, look at your trajectory, and adjust your heading.
-Businesses already do this in quarterly board meetings where they review progress on OKRs and KPIs.
-Engineers do it periodically to review the accuracy of their time estimates.
-If they've been doing it for years, why not us?
-
-You might say, life is to be enjoyed, not optimized for productivity. Even then, you
-should use a time log to make sure you're enjoying life to the best of your ability.
-The only reason to not keep a time log is that you don't want to face the reality
-that you're living suboptimally.
-
-<!---
-
-### What's next
-
-The past five months have sharpened my sense for time management.
-But I'm starting to hit the limits of writing everything down on paper.
-Using a physical book was great for developing a routine,
-but now I want to be able to plan more intentionally and use a tool
-to help me stay true to my plan. For that, I've developed Mojito,
-which takes your desired time allotment, your queue of tasks,
-and creates a weekly plan for you to follow. It's still
-very experimental, but it's helped me make sure I spend time
-on the right projects in the right proportion.
-If it works out, it could be the subject of another post.
--->
