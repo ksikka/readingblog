@@ -1,0 +1,313 @@
+---
+title: "Immutable Data Structures"
+author: ksikka
+date: 2015-10-26
+template: article.jade
+---
+
+In Scala and Clojure, data structures are immutable by default.
+From a Java perspective, this means that you can't modify
+an existing "HashMap" or an "ArrayList". You can only create
+a new modified version.
+
+This sounds terribly inefficient and unnecessary.
+Clone your array or hashmap every time you try to change it?
+However, Scala, Clojure, and other purely functional languages
+take advantage of structural sharing to make modification
+operations efficient. In fact, for most practical purposes,
+they're just as efficient as their Java mutable counterparts!
+
+What does immutability get you though? Anyone who's experienced
+programming in a purely functional language will intuitively understand
+the value of immutability. It causes a fundamental shift in the way
+you think about programming. But long story short, there are at least
+three practical benefits that an imperative programmer can empathize with:
+
+1. You can safely pass objects as values to any other piece of code,
+without worrying about undesired mutation.
+    - Mutation to a data structure can get spread across many
+    different files and actors, devolving into runaway complexity over time.
+
+2. You can share data structures across threads without tricky locking code.
+    - No longer any write-contention on a data structure.
+
+3. Memory-efficient cloning.
+    - Technically this is a benefit of the way immutable data structures
+    are implemented rather than immutability itself.
+
+We could get most of these benefits just by cloning a data structure before
+mutating it, but that's clearly inefficient.
+So let's learn how immutable data structures are actually implemented in purely
+functional languages!
+
+## A Naive Strategy
+
+One naive strategy is to build up a data structure by only recording
+the modifications you do that structure. But this leads to
+inefficient access, as in order to know "what's the value
+where the key is 2" you may have to traverse all of the modifications
+to the data structure. Getting a value from a hashmap would be
+`O(number of modifications)` which is no better than using a linked list.
+There could be some interesting things you can do with moving
+a key,value pair to the front of the list when you access it, but
+you'd still get `O(n)` cost for random accesses.
+
+## Structural Sharing and Path Copying
+
+#### The intuition behind structural sharing stems from the following:
+
+Suppose you have a hashmap of thousands of key,value pairs, and you only want to update one of them.
+Clearly you don't _need_ to copy the entire hashmap - you only need to copy 
+one piece of data - the data you are changing. Since the rest
+of the hashmap is the same - and guaranteed to never change thanks to immutability - you can share it with the old hash map
+using pointers. Sharing the old structure takes no extra work and no extra memory. It's an optimal solution.
+
+However, it's hard to imagine how you'd turn a hashtable into such a structure.
+
+#### Let's try to make a traditional hashtable persistent:
+
+A typical hashmap is an array of linked lists,
+each list representing all of the key/value pairs for which the hash of the key
+modulo the array size is equal to the index of that list in the array.
+You could it immutable by performing update operations like so:
+1. Copy the array of linked lists.
+2. Copy the node containing the key/value pair.
+3. Repair the linked list by copying all the nodes leading up to that node
+   and patch the new node to the tail of the previous linked list.
+4. Perform the regular mutative hashmap operation.
+
+That's not too bad for small hashmaps! We managed to share most of the data.
+But we did an `array_size` amount work to copy all of the linked list pointers,
+which is proportional to the size of the hashmap.
+
+#### Let's "Trie" something else: Path Copying
+
+Instead of storing data in a tabular array, let's try to store it in a trie,
+where the route to the key/value pair is the hash of the key.
+
+Now, to update the hashmap, first traverse the trie to find the key/value pair,
+ and then copy all the nodes in the path to that node, including that node, and including the root.
+Modify the key/value pair node as needed, and voila! You've modified the
+data structure in time proportional to the length of the hash,
+which is constant - usually a 32 or 64 bit number.
+
+This surely sounds a lot slower than a small and nimble hash-table implementation,
+even though it's theoretically constant time. But there are several performance improvements
+that make this thing perform nearly as fast as `java.util.ArrayList`.
+
+#### But let's be real.
+
+In my above description of the trie implementation of a hashmap, I
+was intentionally vague about exact structure of the nodes.
+There are many implementation options and memory-saving tricks that you can consider,
+of which I'll only touch upon a few.
+
+1. Stopping short
+
+First, in our hash trie traversal for insertion, we should stop whenever the
+current hash prefix is unique the in the trie. We'll know when that happens
+because we'll reach the end. We can place the key, value pair at that point
+instead of constructing the full remaining path of nodes that encodes the hash.
+
+This drastically reduces the number of nodes in the path to a key, value pair
+for small tries, which most are. The number of nodes in the path will
+increase gradually as the trie gets larger, but very slowly.
+This is a very desirable property for a data structure to have.
+
+2. Increase the branching factor, decrease the depth
+
+Assuming our hash function outputs 32-bit ints, we can
+partition the hash key into 7 sections of 5 bits.
+Each node can use the 5-bit portion of the hash as an offset
+into an array of 32 pointers, each of which leads to a subtrie.
+Now when you path-copy, you only have to copy a handful of nodes
+with a few relatively small arrays in them.
+
+How do you determine the perfect branching factor?
+Obviously there's a trade-off at play. If your branching factor
+is too small, you're traversing and copying a lot of nodes,
+which will be a lot of random memory accesses (slow).
+
+If your branching factor is too big, you end up copying only
+a few nodes, but the arrays of branches inside of them become needlessly large.
+Note that these arrays will contain mostly null pointers.
+A smaller branching factor means you get more of the savings
+of the "Stopping short" technique. A larger branching factor means
+that your trie is shallower in the case of extremely large hashmaps.
+
+3. Compress the null-pointers away
+
+We observed that by the end of optimization 2, we had arrays
+of size 32 to store the branches, although they'd be sparse.
+What if you could instead have an array that's the exact 
+size of the number of branches you need to store in it?
+
+```
+Store
+
+[ _ _ X _ _ _ Y ]
+  0 1 2 3 4 5 6
+
+  as
+
+[ X Y ]
+```
+
+The problem with this is we lose the ability to index into the array.
+There's an extremely clever trick to solve this problem,
+employed by Phil Bagwell in his paper.
+
+In addition to the compact array of branches,
+keep a 32-bit int as a bitmap, where the ith
+bit is 1 if the ith branch exists.
+Then, count up the number of 1s up to and including that 1,
+and that's the index into the compacted array.
+
+This saves us a ton of memory, but at the cost of time.
+But it turns out most modern processors out there support
+counting the number of 1's in a 32-bit int in constant time.
+So all you have to do is mask the bitmap to get the correct 1s, 
+pass it to `POPCNT`, and boom you have the index into
+the compacted array in constant time.
+
+This is the final structure that Clojure implements for immutable maps. 
+It's formally known as the Hash Array Mapped True (HAMT).
+
+<!--
+
+Persistent data structures 
+
+> A persistent data structure is a data structure that always preserves
+the previous version of itself when it is modified. Such data structures are
+effectively immutable, as their operations do not (visibly) update
+the structure in-place, but instead always yield a new updated structure...
+
+The surprising thing is that modern functional programming languages
+often support this out of the box:
+
+```
+// Now Joe moves, without modifying the original account.
+account2 = account.set('address', '2 anna lane')
+```
+
+And better yet, this operation is - for all practical purposes -
+just as fast as it is in mutable land!
+
+How does it work? Well that's t he 
+
+
+
+
+Intuitively, what you should be able to do instead is
+copy only the portion of data you're changing,
+and construct a new object with all refernces to the old
+state except for the small new portion.
+
+```
+(each arrow represents some change)
+
+Object 1 -> Object 2 -> Object 3 -> ...
+```
+
+Conceptually, we want to "freeze" and objects state, and whenever
+someone wants to make a change, we should clone the object,
+make a few modifications, and freeze the resulting object.
+This way, we're guaranteed that one version of the object
+will be the same forever.
+
+If you think about it, if you can have more information about how an object changes,
+why not? Shouldn't this be the default mode of changing a data structure?
+If you need the ability to look back at previous versions of an object,
+you can utilize that feature, and if you don't need that ability,
+just drop the reference to the old object and don't worry about it!
+
+
+This is great on paper, but physical computers have finite memory
+and if you made a copy of an object every single time you wanted to change
+it, you'd probably run out. Not to mention if that `other...` field
+is large, you'll spend time copying that field over needlessly.
+The reason mutable data structures are so popular and pervasive
+is because they enable fast and simple operations.
+
+It is possible to be faster than the naive "copy everything, modify the object,
+and freeze the object" approach that I mentioned above. You can think
+of many optimizations.
+  - on change, only store the change you're making, not the whole object
+  - store pointers to the previous object's fields except the ones you're changing
+    - and instead of storing a pointer to a pointer, store the root pointer only
+  - optimize garbage collection to aggressively clean up unused object states
+
+Computer scientists have spent a lot of time thinking
+about how to implement immutable data structures so that they're efficient
+and feasible to use in practice. In fact, many functional programming languages
+provide immutable data structures as the primary way of interacting with data,
+and they've acheived performance that matches their mutable counterparts.
+This is especially impressive when you consider how much easier it is
+to write code that assumes objects are immutable - you never have to worry
+if some object has changed unexpectedly by some other piece of code since
+the last time you saw it [1].
+
+I wanted to understand how languages like ML, Haskell, Lisp, and
+all their variants implement immutable data structures under the hood.
+All these languages have implementations that rival the performance
+of native mutable code, but have the tremendous benefits of immutability.
+So I googled around, and here's what I found.
+
+Persistent data structures
+--------------------------
+
+Googling for "immutable data structures" leads you right to the wikipedia page
+called Persistent Data Structures (TODO link). Lo and behold, they're the same
+thing I'm describing above.
+
+The intro is very well written, but I want to get a sense for the evolution
+of persistent data structures. I notice that many of the sections in the
+wikipedia article say "This example is taken from Okasaki. See the bibliography."
+So naturally I google to see who this Okasaki is.
+
+Okasaki's claim to fame is his book, "Purely Functional Data Structures",
+which has become the de facto text on the topic. It was published
+in the late 90s, so it's fairly recent. The other famous paper
+with a lot big names on it is "Making Data Structures Persistent"
+(https://www.cs.cmu.edu/~sleator/papers/making-data-structures-persistent.pdf).
+This paper was published in 1986 - also fairly recent.
+
+The oldest functional language that I know of - Lisp - dates back
+to the late 50s. Surely there must be some work done around
+that time on this topic?
+
+The way lisp itself handles data structures,
+is by disallowing (or discouraging) destructive operations (immutability) but
+allowing you to create a Cell which contains data and perhaps
+another Cell [2]. You can then chain Cells together to form a list,
+and that's where Lisp gets its name: LISt Processor (TODO Source wikipedia).
+
+This descibes immutable data structures, but what's lacking here is
+the ability to change the value in a node in the middle of a list,
+and have both versions of the entire list. Also, lisp
+is far less immutable than I originally thought. You can use `SETF`
+and `SETQ` to modify lists, structures, and anything really. [2] (TODO make it make sense).
+
+Lesson learned: Immutable data structures are ones that you can't change.
+Persistent data structures are ones that you can conceptually change
+but past versions remain unchanged. Persistent data structures
+are harder to implement than immutable data structures.
+
+TODO Look into Immutable.js by facebook. They offer efficient persistent data structures.
+TODO What are the data structures in OCaml?
+
+
+[1] This is especially useful when writing concurrent code that takes
+advantage of multiple cores.
+
+[2] Ok, I'm oversimplifying. Lisp has a macro called `SETF` which
+writes a value to a place. You *can* mutate a list. This is
+just rarely done in practice. I'm totally uneducated about lisp,
+so if you want to know more, consult these thorough resources.
+http://www.gigamonkeys.com/book/they-called-it-lisp-for-a-reason-list-processing.html
+http://cs.gmu.edu/~sean/lisp/cons/
+
+
+
+
+    -->
