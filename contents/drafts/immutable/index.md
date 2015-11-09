@@ -18,19 +18,49 @@ A typical imperative hashmap is an array of linked lists,
 where each linked list represents a bucket of all the key/value pairs where the key hashes
 to that bucket.
 
-```
-/                                                                           \
-
-
-
-
-                               ( IMAGE HERE )
-
-
-
-
-\                                                                           /
-```
+<section class="illustration">
+  <table class="vertical-array">
+    <tr><td>
+      <div class="ll-wrapper">
+        <div class="ll-pointer">
+        </div><div class="ll-edge">
+        </div><div class="ll-edge">
+        </div><div class="ll-node">
+        </div><div class="ll-edge">
+        </div><div class="ll-node">
+        </div><div class="ll-edge">
+        </div><div class="ll-node"></div>
+      </div>
+    </td></tr>
+    <tr><td>
+      <div class="ll-wrapper">
+        <div class="ll-pointer">
+        </div><div class="ll-edge">
+        </div><div class="ll-edge">
+        </div><div class="ll-node"></div>
+      </div>
+    </td></tr>
+    <tr><td></td></tr>
+    <tr><td>
+      <div class="ll-wrapper">
+        <div class="ll-pointer">
+        </div><div class="ll-edge">
+        </div><div class="ll-edge">
+        </div><div class="ll-node">
+        </div><div class="ll-edge">
+        </div><div class="ll-node"></div>
+      </div>
+    </td></tr>
+    <tr><td>
+      <div class="ll-wrapper">
+        <div class="ll-pointer">
+        </div><div class="ll-edge">
+        </div><div class="ll-edge">
+        </div><div class="ll-node"></div>
+      </div>
+    </td></tr>
+  </table>
+</section>
 
 You could make it immutable by performing updates like so:
 

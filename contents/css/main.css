@@ -436,3 +436,62 @@ code.lang-markdown .bullet {
     margin-bottom: 1em;
   }
 }
+
+/* CUSTOM */
+
+/* DEBUG */
+section.illustration {
+  box-sizing: border-box;
+  position: relative;
+  font-size: 0.9em;
+  overflow: auto;
+  background: #fff;
+  border: 1px dashed #d2d2d2;
+  border-radius: 0.25em;
+  margin-bottom: 1.8em;
+  padding: 1em;
+}
+
+section.illustration table.vertical-array {
+  border-collapse: collapse;
+}
+
+section.illustration table.vertical-array tr td {
+  height: 26px;
+  width: 26px;
+  border: 2px solid black;
+  position: relative;
+}
+
+section.illustration .ll-wrapper {
+  display: flex;
+  align-content: flex-start;
+  align-items: center;
+}
+
+section.illustration .ll-pointer {
+  border-radius: 8px;
+  border: 8px solid #333;
+}
+
+section.illustration .ll-node {
+  height: 16px;
+  width: 16px;
+  border-radius: 16px;
+  border: 4px solid #333;
+}
+
+section.illustration .ll-edge {
+  border: 2px solid #333;
+  width: 6px;
+  margin-left: -2px;
+  margin-right: -2px;
+}
+
+section.illustration table.vertical-array tr td .ll-wrapper {
+  position: absolute;
+  top: 2px;
+  left: 6px;
+  width: 300px;
+}
+
