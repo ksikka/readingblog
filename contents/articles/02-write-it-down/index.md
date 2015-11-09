@@ -6,10 +6,10 @@ template: article.jade
 ---
 
 If humans are good at anything, it's self-deception.
-We say one thing with our time, but then turn around
-and do something else. And without a written record of
-your time, you wouldn't even know it. Here's how I
-mitigate this problem with a time log.
+We say we're doing one thing with our time,
+but then we turn around and do something else.
+And without a written record, you wouldn't even know it.
+Here's how I mitigated this problem with a time log.
 
 ----
 
@@ -56,6 +56,18 @@ what you actually want to do.
 I got better at following up with people and projects.
 Looking at my previous day's time log every day reminded me to follow up with
 people who I otherwise wouldn't have, and to finish working on projects that I started.
+
+Sending light messages like "hey I enjoyed meeting you yesterday"
+is so downright easy, and incredibly effective. As a result,
+I got more opportunities to socialize with people, and it turned
+into a virtuous cycle.
+
+The other thing I noticed as an engineer was that my tasks at work
+may have been individually trivial, but over the course of months,
+they added up to meaningful improvements in the product I was working on.
+In contrast, the time I spent outside of work was spent on one-off activities
+that didn't amount to anything. I noticed this very quickly thanks
+to keeping a time log, and was able to focus on doing things that add up instead.
 
 **3. Don't rely on your memory for anything important.**
 
