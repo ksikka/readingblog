@@ -1,22 +1,21 @@
 ---
 title: "Write it down"
 author: ksikka
-date: 2015-08-26
+date: 2015-11-09
 template: article.jade
 ---
 
 If humans are good at anything, it's self-deception.
-We say one thing, but then turn around and do something else.
-When it comes to time management, we say we're doing X
-with our time, but we may actually be doing Y.
-And without a written record of what you do with your time,
-you wouldn't even know if you yourself are a victim of this.
+We say one thing with our time, but then turn around
+and do something else. And without a written record of
+your time, you wouldn't even know it. Here's how I
+mitigate this problem with a time log.
 
 ----
 
-What can you do about this? Write everything down, of course.
-This way you can have something to look at and get infuriated at _now_
-rather than when it's too late.
+The simplest solution to the problem of self-deception
+is to write down what you do everyday and then look
+at it once in a while.
 
 Example:
 ```
@@ -38,7 +37,11 @@ Example:
 
 I did this for six months, and I found it extremely useful.
 
-First of all, it becomes clear that if you don't take proactive
+## What I learned
+
+**1. Your plan to do things on the side is doomed.**
+
+It becomes clear that if you don't take proactive
 measures, all of your time will get consumed by full-time work.
 It's not just the 8 hours a day you're supposed to spend there.
 It's the time spent thinking about it before work,
@@ -48,12 +51,23 @@ A lot of people enter a full-time job thinking
 you write everything down to make sure you're making progress on
 what you actually want to do.
 
-The second benefit was that I got better at following up with people and projects.
+**2. Following up is easy and effective - but we forget.**
+
+I got better at following up with people and projects.
 Looking at my previous day's time log every day reminded me to follow up with
 people who I otherwise wouldn't have, and to finish working on projects that I started.
 
-Lastly, you get a wonderful feeling of security from knowing
-that your time has been recorded forever.
+**3. Don't rely on your memory for anything important.**
+
+It's no wonder we can't remember something as simple as following up with a person.
+Life moves at such a fast pace in today's day in age.
+The only hope we have is acknowledge the limitation of our memory,
+and use external memory to bolster it.
+
+There was a time when I relied on memory for my calendar, finances, everything.
+But life is so much easier when it's all explicitly tracked in writing
+so I don't _have_ to remember it.
+
 Writing down what you did during a vacation gets you the most ROI. What's a vacation worth if
 the memories only last a few months and then fade? It's a depreciating asset. When you write down
 what you do, memories hold their value and accrue over time. Writing adds context to photos
