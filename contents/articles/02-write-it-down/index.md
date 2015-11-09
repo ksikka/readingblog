@@ -74,11 +74,9 @@ to keeping a time log, and was able to focus on doing things that add up instead
 It's no wonder we can't remember something as simple as following up with a person.
 Life moves at such a fast pace in today's day in age.
 The only hope we have is acknowledge the limitation of our memory,
-and use external memory to bolster it.
-
-There was a time when I relied on memory for my calendar, finances, everything.
-But life is so much easier when it's all explicitly tracked in writing
-so I don't _have_ to remember it.
+and use writing - or technology - to bolster it.
+Life is so much easier when you can explicitly track your calendar,
+finances, etc in writing.
 
 Writing down what you did during a vacation gets you the most ROI. What's a vacation worth if
 the memories only last a few months and then fade? It's a depreciating asset. When you write down
